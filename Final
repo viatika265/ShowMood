@@ -1,0 +1,151 @@
+
+import java.nio.channels.Pipe.SourceChannel;
+import java.util.Scanner;
+
+public class ShowMood {
+
+    static int count = 0;
+    static String[] notes = new String[30];
+    static String[] moods = new String[30];
+
+    public static void main(String[] args) {
+        PesanAwal();
+        data();
+    }
+    
+    public static void PesanAwal(){
+        System.out.println("Hallo Showy!!");
+        System.out.println("Selamat Datang di ShowMood: Aplikasi Pelacak Suasana Hati Kamu!!");
+        System.out.println(" ");
+        System.out.println("--------------------ShowMood--------------------");
+        System.out.println(" ");
+        System.out.println("Bagaimana harimu?");
+        System.out.println("Apakan menyenangkan?");
+        System.out.println("Apa ada hal yang membuatmu marah?");
+        System.out.println("Atau ada yang membuatmu kesal?");
+        System.out.println("Tidak ada teman bercerita?");
+        System.out.println(" ");
+        System.out.println("--------------------ShowMood--------------------");
+        System.out.println(" ");
+        System.out.println("             Tenang! Ada ShowMood!!");
+        System.out.println(" ");
+        System.out.println("--------------------ShowMood--------------------");
+        System.out.println(" ");
+        System.out.println("Di sini kamu bisa memilih suasana hati sesuai dengan keadaanmu hari ini dan bercerita sepuasnya dengan ShowMood");
+        System.out.println(" ");
+        System.out.println("Ayo pilih dan ceritakan harimu dengan ShowMood:)");
+    }
+
+        public static void data() {
+            Scanner input = new Scanner (System.in);
+        while (true) {
+            System.out.println("\nPilih");
+            System.out.println("1. Tambah Suasana Hati");
+            System.out.println("2. Lihat Riwayat Suasana Hati Kamu");
+            System.out.println("3. Keluar");
+            System.out.print("Pilih menggunakan angka yang sesuai yaaa (1-3): ");
+            
+
+            int pilih = input.nextInt();
+            input.nextLine();
+            
+            if (pilih == 1) {
+                if ( count < 30) {
+                    MenambahMood(input);
+                } else {
+                    System.out.println("Moodmu sudah ShowMood simpan ^_^" + (count + 1));
+                }
+             }else if (pilih == 2) {
+                    RiwayatSuasanaHati(input);
+            } else if (pilih == 3) {
+                System.out.println("Terima Kasih Sudah Menjadi Bagian dari ShowMood!!");
+                break;
+            } else {
+                System.out.println("Pilihanmu tidak sesuai, pilih nomor 1-3");
+            }
+            }
+            input.close();
+        }
+
+
+            private static void MenambahMood(Scanner input) {
+            System.out.println("Mood kamu hari ini");
+            System.out.println("1. Bahagia");
+            System.out.println("2. Bosan");
+            System.out.println("3. Marah");
+            System.out.println("4. Gelisah");
+            System.out.println("5. Berdebar");
+            System.out.println("6. Stres");
+            System.out.print("Pilih sesuai nomor yuk dari 1 sampai 5: ");
+               
+            int memilih = input.nextInt();
+            input.nextLine();
+             
+            if (memilih == 1) {
+                moods [count] =(">~<");
+                System.out.println("Wah! Ceritakan alasanmu bahagia hari ini dong!  >~< ");
+                String cerita = input.nextLine();
+                notes[count] = ("Ceritamu hari ini: " + cerita);
+            } else if (memilih == 2) {
+                moods [count] = ("-_-");
+                System.out.println("Kenapa hari ini kamu merasa bosan -_-? Mau bercerita? ");
+                String cerita = input.nextLine();
+                notes [count] = ("Ceritamu hari ini: " + cerita);
+            } else if (memilih == 3) {
+                moods [count] = ("><_><");
+                System.out.println("Apakah ada hal yang menyebalkan hari ini ><_><? Yuk cerita! ");
+                String cerita = input.nextLine();
+                notes [count] = ("Ceritamu hari ini: " + cerita);
+
+            } else if (memilih == 4) {
+                moods [count] = ("¬_¬ ");
+                System.out.println("Apakah ada hal yang menyebalkan hari ini (¬_¬ )? Yuk cerita! ");
+                String cerita = input.nextLine();
+                notes [count] = ("Ceritamu hari ini: " + cerita);
+            } else if (memilih == 5) {
+                moods [count] = (" ^o^ ");
+                System.out.println("Wahh! Apa yang membuatmu berdebar? Ceritakan pada ShowMood ^o^");
+                String cerita = input.nextLine();
+                notes [count] = ("Ceritamu hari ini: " + cerita);
+            } else if (memilih == 6) {
+                moods [count] = ("*~*");
+                System.out.println("Apakah kamu ada masalah? Yuk cerita ke ShowMood!");
+                String catatan = input.nextLine();
+                notes [count] = ("Ceritamu hari ini: " + catatan);
+        } else {
+                System.out.println("Tidak ada suasana hati dan catatan yang ditambahkan!");
+            }
+            count++;
+        }
+        
+    
+            
+        private static void RiwayatSuasanaHati(Scanner input) {
+            System.out.println("Pilih akumulasi!");
+            System.out.println("1. Dalam 7 hari");
+            System.out.println("2. Dalam 30 hari");
+
+            int akumulasi = input.nextInt();
+            input.nextLine();
+
+            if (akumulasi == 1) {
+   
+            System.out.println("Mood kamu dalam 7 hari ini: ");
+            for (int i = 0; i < 7 && i < count; i++) {
+                printSuasanaHati(i);
+            }
+            } else if (akumulasi == 2) {
+  
+                System.out.println("Mood kamu dalam 30 hari: ");
+                for (int i = 0; i < count; i++) {
+               printSuasanaHati(i);
+                }
+                } else {
+                    System.out.println("Kamu belum mengisinya");
+                }
+            }
+            private static void printSuasanaHati(int i) {
+                System.out.println( "Mood Kamu: " + moods[i]);
+                System.out.println(notes[i]);
+            }
+        }
